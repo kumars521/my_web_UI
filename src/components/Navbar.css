@@ -1,0 +1,164 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY LAYOUT */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* HEADER */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 70px;
+
+  background: #8eaadd;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 20px;
+
+  z-index: 1000;
+}
+
+/* LOGO */
+.logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* NAVIGATION */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  flex-wrap: wrap;
+}
+
+/* NAV BUTTONS */
+.nav-btn {
+  text-decoration: none;
+  color: #111;
+
+  padding: 8px 12px;
+  border-radius: 4px;
+
+  transition: 0.3s;
+
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* LOGOUT */
+.logout-btn {
+  border: none;
+  background: #f44336;
+  color: white;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #d32f2f;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 3px 0;
+}
+
+/* PAGE CONTENT */
+.page-container {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+
+  margin-top: 70px;
+  padding: 20px;
+  padding-bottom: 70px;
+}
+
+/* FOOTER */
+.footer {
+  position: fixed;
+
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 50px;
+
+  background: #e2e4e9;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-top: 1px solid #ccc;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+
+    top: 70px;
+    right: 0;
+
+    width: 260px;
+
+    background: #8eaadd;
+
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 20px;
+
+    display: none;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}

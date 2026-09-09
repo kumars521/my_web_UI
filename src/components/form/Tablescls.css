@@ -1,0 +1,31 @@
+/* default (mobile first) */
+.table-container {
+  max-height: calc(100vh - 200px);
+  max-width: 95vw;
+  overflow: auto;
+    overflow-x: auto;
+  overflow-y: auto;
+}
+
+/* tablet and up */
+@media (min-width: 600px) and (max-width: 900px) {
+  .table-container {
+    max-height: calc(100vh - 300px);
+    max-width: 150vh;
+  }
+}
+
+/* desktop (matches MUI md ≈ 900px) */
+@media (min-width: 901px) and (max-width: 1250px) {
+  .table-container {
+    max-height: calc(100vh - 300px);
+    max-width: 185vh;
+  }
+}
+
+/* large screens */
+@media (min-width: 1251px) {
+  .table-container {
+    max-width: 150vh;
+  }
+}

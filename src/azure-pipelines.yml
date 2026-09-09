@@ -1,0 +1,23 @@
+trigger:
+- main
+
+steps:
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '20.x'
+  displayName: Install Node
+
+- script: |
+    npm install
+  displayName: Install Packages
+
+- script: |
+    npm run build
+  displayName: Build React App
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'dist'
+    ArtifactName: 'react-artifact'
+    publishLocation: 'Container'

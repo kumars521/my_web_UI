@@ -1,0 +1,296 @@
+/* Marine Form Advanced Bootstrap Styling */
+
+.marine-form-container {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+}
+
+/* Page Header Styling */
+.marine-form-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  letter-spacing: -0.5px;
+}
+
+.marine-form-header p {
+  font-size: 0.95rem;
+  color: #6c757d;
+}
+
+/* Summary Cards Enhancement */
+.marine-summary-card {
+  background: #ffffff;
+  border: none;
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.marine-summary-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.marine-summary-card .card-body {
+  padding: 1.5rem;
+}
+
+.marine-summary-card .metric-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.marine-summary-card .metric-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.marine-summary-card .icon-badge {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(13, 110, 253, 0.1);
+}
+
+.marine-summary-card .icon-badge.primary {
+  background-color: rgba(13, 110, 253, 0.1);
+  color: #0d6efd;
+}
+
+.marine-summary-card .icon-badge.success {
+  background-color: rgba(25, 135, 84, 0.1);
+  color: #198754;
+}
+
+.marine-summary-card .icon-badge.warning {
+  background-color: rgba(255, 193, 7, 0.1);
+  color: #ffc107;
+}
+
+/* Table Card Styling */
+.marine-table-card {
+  background: #ffffff;
+  border: none;
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+}
+
+.marine-table-card .card-header {
+  background-color: #ffffff;
+  border: none;
+  padding: 2rem 2rem 1rem 2rem;
+}
+
+.marine-table-card .table-header-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 0.25rem;
+}
+
+.marine-table-card .table-header-subtitle {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin: 0;
+}
+
+.marine-table-card .record-badge {
+  background-color: #f8f9fa;
+  color: #212529;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+/* Modal Styling */
+.marine-modal-content {
+  border: none;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.marine-modal-header {
+  background-color: #f8f9fa;
+  border: none;
+  border-radius: 1.5rem 1.5rem 0 0;
+  padding: 2rem;
+}
+
+.marine-modal-header h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.marine-modal-header p {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.marine-modal-body {
+  background-color: #fafbfc;
+  padding: 2rem;
+}
+
+.marine-modal-footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  border-radius: 0 0 1.5rem 1.5rem;
+  padding: 1.5rem 2rem;
+}
+
+/* Section Styling */
+.marine-section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-transform: capitalize;
+}
+
+.marine-accordion .MuiAccordionSummary-root {
+  padding: 1rem 1.5rem;
+  background-color: #f8f9fa;
+}
+
+.marine-accordion .MuiAccordionDetails-root {
+  padding: 2rem;
+}
+
+/* Form Card Styling */
+.marine-form-card {
+  background: #ffffff;
+  border: none;
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+.marine-form-card .card-body {
+  padding: 2rem;
+}
+
+.marine-form-card .form-section-divider {
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.marine-form-card .form-section-divider:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+/* Button Styling */
+.marine-btn-primary {
+  background-color: #198754;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.marine-btn-primary:hover {
+  background-color: #157347;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(25, 135, 84, 0.4);
+}
+
+.marine-btn-primary:active {
+  transform: translateY(0);
+}
+
+.marine-btn-success {
+  background-color: #198754;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.marine-btn-success:hover {
+  background-color: #157347;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(25, 135, 84, 0.4);
+}
+
+/* Status Indicators */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.status-indicator.active {
+  background-color: rgba(25, 135, 84, 0.1);
+  color: #198754;
+}
+
+.status-indicator.warning {
+  background-color: rgba(255, 193, 7, 0.1);
+  color: #ffc107;
+}
+
+.status-indicator.error {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .marine-form-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .marine-summary-card .metric-value {
+    font-size: 2rem;
+  }
+
+  .marine-modal-header {
+    padding: 1.5rem;
+  }
+
+  .marine-modal-body {
+    padding: 1.5rem;
+  }
+
+  .marine-form-card .card-body {
+    padding: 1.5rem;
+  }
+}
+
+/* Animation Utilities */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.marine-fade-in {
+  animation: slideInUp 0.3s ease-out;
+}
