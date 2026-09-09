@@ -1,0 +1,1 @@
+.table-container{max-width:95vw;max-height:calc(100vh - 200px);overflow:auto}@media (width>=600px) and (width<=900px){.table-container{max-width:150vh;max-height:calc(100vh - 300px)}}@media (width>=901px) and (width<=1250px){.table-container{max-width:185vh;max-height:calc(100vh - 300px)}}@media (width>=1251px){.table-container{max-width:150vh}}

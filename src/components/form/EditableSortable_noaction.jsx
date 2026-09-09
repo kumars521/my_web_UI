@@ -1,0 +1,222 @@
+import React,{useState}from"react";
+import{Table,TableHead,TableRow,TableCell,TableBody,TableSortLabel,Paper,TableContainer,TablePagination,TextField,Button,InputAdornment,IconButton,CircularProgress}from"@mui/material";
+import EditIcon from"@mui/icons-material/Edit";
+import DeleteIcon from"@mui/icons-material/Delete";
+import ClearIcon from"@mui/icons-material/Clear";
+
+const EditableSortable_noaction=({columns,rowData,onEdit,pagination=true,pageSizeOptions=[10,25,50],loading=false})=>{
+  const[orderBy,setOrderBy]=useState("");
+  const[order,setOrder]=useState("asc");
+  const[page,setPage]=useState(0);
+  const[rowsPerPage,setRowsPerPage]=useState(pageSizeOptions[0]);
+  const[filters,setFilters]=useState({});
+
+  const handleSort=(field)=>{
+    const isAsc=orderBy===field&&order==="asc";
+    setOrder(isAsc?"desc":"asc");
+    setOrderBy(field);
+  };
+
+  const handleFilterChange=(field,value)=>{
+    setFilters(p=>({...p,[field]:value}));
+    setPage(0);
+  };
+
+  const handleClearFilter=(field)=>{
+    setFilters(p=>{
+      const next={...p};
+      delete next[field];
+      return next;
+    });
+    setPage(0);
+  };
+
+  const handleClearAllFilters=()=>{
+    setFilters({});
+    setPage(0);
+  };
+
+  const filteredRows=rowData.filter(row=>
+    columns.every(col=>{
+      const f=filters[col.field];
+      return !f||String(row[col.field]||"").toLowerCase().includes(f.toLowerCase());
+    })
+  );
+
+  const sortedRows=[...filteredRows].sort((a,b)=>{
+    if(!orderBy)return 0;
+    const A=a[orderBy]||"",B=b[orderBy]||"";
+    return order==="asc"?A>B?1:-1:A<B?1:-1;
+  });
+
+  const paginatedRows=pagination
+    ?sortedRows.slice(page*rowsPerPage,page*rowsPerPage+rowsPerPage)
+    :sortedRows;
+
+  return(
+    <div className="container-fluid mt-4">
+      <div className="card border-0 shadow-lg rounded-4">
+        {/* <div className="card-header bg-dark text-white py-3">
+          <h5 className="mb-0">Data Table</h5>
+        </div> */}
+
+        <div className="card-body p-3">
+          <div className="mb-3 d-flex justify-content-between align-items-center">
+            <div className="text-muted small">
+              {Object.keys(filters).length > 0 ? (
+                <span>
+                  Showing <strong>{sortedRows.length}</strong> of <strong>{rowData.length}</strong> records
+                </span>
+              ) : (
+                <span>
+                  Total: <strong>{rowData.length}</strong> records
+                </span>
+              )}
+            </div>
+            {Object.keys(filters).length > 0 && (
+              <Button
+                variant="outlined"
+                color="warning"
+                size="small"
+                onClick={handleClearAllFilters}
+              >
+                Clear all filters
+              </Button>
+            )}
+          </div>
+          <TableContainer
+            component={Paper}
+            elevation={0}
+            sx={{
+              borderRadius: 4,
+              maxHeight: "65vh",
+              overflow: "auto"
+            }}
+          >
+            <Table stickyHeader size="small"  sx={{ tableLayout: "auto"  }} >
+              <TableHead>
+                <TableRow>
+                  {columns.map(col => (
+                    <TableCell
+                      key={col.field}
+                      sx={{
+                        background:"#899290",
+                        color:"#1b1919",
+                        fontWeight:700,
+                        whiteSpace:"nowrap",
+                        px:10,
+                        py:2
+                      }}
+                    >
+                      <TableSortLabel
+                        active={orderBy === col.field}
+                        direction={orderBy === col.field ? order : "asc"}
+                        onClick={() => handleSort(col.field)}
+                        sx={{
+                          color: "#fff",
+                          "& .MuiTableSortLabel-icon": {
+                            color: "#fff !important"
+                          }
+                        }}
+                      >
+                        {col.headerName}
+                      </TableSortLabel>
+                    </TableCell>
+                  ))}
+                </TableRow>
+
+                  <TableRow>
+                    {columns.map(col => (
+                      <TableCell key={col.field}>
+                        <TextField
+                          fullWidth
+                          size="small"
+                          placeholder={`Search ${col.headerName}`}
+                          value={filters[col.field] || ""}
+                          onChange={(e) =>
+                            handleFilterChange(col.field, e.target.value)
+                          }
+                          InputProps={{
+                            endAdornment: filters[col.field] ? (
+                              <InputAdornment position="end">
+                                <IconButton
+                                  size="small"
+                                  edge="end"
+                                  onClick={()=>handleClearFilter(col.field)}
+                                  aria-label={`Clear ${col.headerName} filter`}
+                                >
+                                  <ClearIcon fontSize="small" />
+                                </IconButton>
+                              </InputAdornment>
+                            ) : null
+                          }}
+                        />
+                      </TableCell>
+                    ))}
+                  </TableRow>
+              </TableHead>
+
+              <TableBody>
+                {loading ? (
+                  <TableRow>
+                    <TableCell colSpan={columns.length} sx={{ py: 6 }}>
+                      <div className="d-flex flex-column align-items-center justify-content-center">
+                        <CircularProgress />
+                        <div className="text-muted mt-2">Loading data, please wait...</div>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ) : paginatedRows.length === 0 ? (
+                  <TableRow>
+                    <TableCell colSpan={columns.length} sx={{ py: 6 }}>
+                      <div className="d-flex flex-column align-items-center justify-content-center">
+                        <div className="fs-6 text-muted">No records available.</div>
+                        <div className="text-muted">Try adjusting filters or refresh the data.</div>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ) : (
+                  paginatedRows.map((row,i)=>(
+                    <TableRow
+                      key={row.id || i}
+                      hover
+                      sx={{
+                        backgroundColor: i % 2 === 0 ? "#d7ebec" : "#e2eaeb",
+                        "&:hover": { backgroundColor: "#dbeafe" }
+                      }}
+                    >
+                      {columns.map(col => (
+                        <TableCell key={col.field} sx={{ whiteSpace: "nowrap" }}>
+                          {row[col.field]}
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  ))
+                )}
+              </TableBody>
+            </Table>
+          </TableContainer>
+
+          {pagination && !loading && (
+            <div className="mt-3">
+              <TablePagination
+                component="div"
+                count={sortedRows.length}
+                page={page}
+                rowsPerPage={rowsPerPage}
+                onPageChange={(e,p)=>setPage(p)}
+                onRowsPerPageChange={e=>{
+                  setRowsPerPage(parseInt(e.target.value));
+                  setPage(0);
+                }}
+                rowsPerPageOptions={pageSizeOptions}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default EditableSortable_noaction;
