@@ -2,7 +2,6 @@ import axios from "axios";
 
 const API = axios.create({
   baseURL: "https://localhost:44353",
-  // baseURL: "https://gme-uoa-invoicingapi.testweb.bp.com/",
 });
 
 import { startLoading, stopLoading } from "./loadingService";
